@@ -28,10 +28,6 @@ jobs:
         run: |
           npm run build  # Ensure Next.js build command is run
 
-      - name: Generate static files (optional for export)
-        run: |
-          npm run export  # If you need static files for some parts of the app (optional)
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
