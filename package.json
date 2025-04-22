@@ -2,13 +2,13 @@
   "name": "daynightcricket",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "node .next/standalone/server.js",
-    "lint": "next lint",
-    "postbuild": "cpx .next/static/**/* .next/standalone/.next/static"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "node .next/standalone/server.js",
+  "lint": "next lint",
+  "postbuild": "cpx .next/static/* .next/standalone/.next/static"
+},
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
