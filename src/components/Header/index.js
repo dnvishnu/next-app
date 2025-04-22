@@ -30,7 +30,7 @@ export default function Header({ date, active }) {
   const navigation = [
     {
       name: "Matches",
-      href: `/matches?date=${initialDate}`,
+      href: `/${initialDate}`,
       current: active === "Matches",
     },
     { name: "Register", href: "/register", current: active === "Register" },

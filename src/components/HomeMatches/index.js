@@ -103,12 +103,11 @@ export default function HomeMatches() {
                   <HomeCard
                     key={index}
                     data={data}
-                    url={`/match-details?version=v2&date=${data.date
+                    url={`/match/${data.series_id}/${data.id}?date=${data.date
                       .split("-")
                       .reverse()
-                      .join("-")}&seriesId=${data.series_id}&matchId=${
-                      data.id
-                    }`}
+                      .join("-")}&version=v2`}
+                    
                   />
                 ))
               ) : (

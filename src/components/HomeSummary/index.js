@@ -63,7 +63,7 @@ export default function HomeSummary({ matches }) {
             return (
               <Link
                 key={index}
-                href={`/match-details?version=v2&date=${formattedDate}&seriesId=${match.series_id}&matchId=${match.id}`}
+                href={`/match/${match.series_id}/${match.id}?date=${formattedDate}&version=v2`}
                 className="group"
               >
                 <article className="bg-gray-50 border border-gray-200 rounded-sm p-6 flex flex-col justify-between h-full w-full">

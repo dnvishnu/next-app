@@ -7,7 +7,9 @@ export default function Match(props) {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    const bucketUrl = `https://storage.googleapis.com/daynightcricket/${props.date}.json?t=${new Date().getTime()}`;
+    const bucketUrl = `https://storage.googleapis.com/daynightcricket/${
+      props.date
+    }.json?t=${new Date().getTime()}`;
 
     fetch(bucketUrl)
       .then((response) => {
@@ -43,7 +45,7 @@ export default function Match(props) {
             key={index}
             date={props.date}
             data={data}
-            url={`/match-details?version=v2&date=${props.date}&seriesId=${data.series_id}&matchId=${data.id}`}
+            url={`/match/${data.series_id}/${data.id}?date=${props.date}&version=v2`}
           />
         ) : (
           <Card
@@ -54,9 +56,7 @@ export default function Match(props) {
             additionalData={data.additional_data}
             url={
               data?.additional_data?.main_ids?.length >= 2
-                ? `/match-details?version=v1&date=${data.date}&seriesId=${
-                    data.additional_data.main_ids[0] || ""
-                  }&matchId=${data.additional_data.main_ids[1] || ""}`
+                ? `/match/${data.additional_data.main_ids[0]}/${data.additional_data.main_ids[1]}?date=${data.date}&version=v1`
                 : "#"
             }
           />

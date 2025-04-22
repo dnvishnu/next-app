@@ -15,7 +15,7 @@ export default function DateNavigation() {
   });
 
   const handleDateClick = (date) => {
-    router.push(`/matches?date=${date}`);
+    router.push(`/${date}`);
   };
 
   return (

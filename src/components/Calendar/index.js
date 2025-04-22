@@ -80,7 +80,7 @@ export default function Calendar({ setIsModalOpen, activeDate }) {
     const formattedDate = `${String(day.getDate()).padStart(2, "0")}-${String(
       day.getMonth() + 1
     ).padStart(2, "0")}-${day.getFullYear()}`;
-    router.push(`/matches?date=${formattedDate}`);
+    router.push(`/${formattedDate}`);
     setIsModalOpen(false);
   };
 

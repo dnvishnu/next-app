@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node .next/standalone/server.js",
+    "lint": "next lint",
+    "postbuild": "cpx .next/static/**/* .next/standalone/.next/static"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
