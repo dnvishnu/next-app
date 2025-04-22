@@ -35,7 +35,7 @@ jobs:
           path: .next
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Using Windows runner for deployment to a Windows-based App Service
     needs: build
     environment:
       name: 'Production'
@@ -56,15 +56,22 @@ jobs:
         run: |
           npm ci  # For clean installation without package-lock modification
 
+      - name: Use xcopy to copy static files
+        run: |
+          xcopy /E /I .next\standalone\* build\
+          xcopy /E /I .next\static build\.next\static
+          xcopy /E /I public build\public
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'daynightcricket-prod'
           slot-name: 'Production'
-          package: .  # Path to the root of the app for deployment
+          package: ./build  # Path to the root of the app for deployment
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3FC52D650F27479DAAFDFAC542EDCF00 }}
 
       - name: Start the Next.js SSR app on Azure
         run: |
           npm run start  # This will start the Next.js app in production mode (using .next/standalone/server.js)
+
